@@ -17,6 +17,15 @@ class MailController {
             res.status(500).json('Error sending email')
         }
     }
+
+    async checkServer(req: Request, res: Response) {
+        const to  = 'edgarlevy88@gmail.com';
+        const emailSubject = 'Confirm Mail is received';
+        const emailText ='Weekly reminder';
+        await sendEmail(to, emailSubject, emailText);
+
+        res.json('Server Running!');
+    }
 }
 
 export const mailController = new MailController();
